@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session
 import os
 
+
 class DBStorage:
     ''' This class manages all database storage for HBnB '''
     __engine = None
@@ -16,7 +17,7 @@ class DBStorage:
         host = os.getenv('HBNB_MYSQL_HOST')
         db = os.getenv('HBNB_MYSQL_DB')
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".format(
-                                       user, pwd, host, db), pool_pre_ping=True)
+                                    user, pwd, host, db), pool_pre_ping=True)
         metadata = MetaData()
         if os.getenv('HBNB_ENV') == 'test':
             metadata.drop_all()
@@ -35,7 +36,7 @@ class DBStorage:
             from models.city import City
             from models.amenity import Amenity
             from models.review import Review
-        
+
             class_list = [State, City, User, Place, Review, Amenity]
             for query_cls in class_list:
                 for obj in self.__session.query(query_cls).all():
@@ -66,6 +67,7 @@ class DBStorage:
         from models.review import Review
         from sqlalchemy.orm import sessionmaker, scoped_session
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()

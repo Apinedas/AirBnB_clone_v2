@@ -132,12 +132,12 @@ class HBNBCommand(cmd.Cmd):
             elif "." in attr_array[1]:
                 try:
                     attr_array[1] = float(attr_array[1])
-                except:
+                except Exception:
                     continue
             else:
                 try:
                     attr_array[1] = int(attr_array[1])
-                except:
+                except Exception:
                     continue
             kwargs[attr_array[0]] = attr_array[1]
         new_instance = HBNBCommand.classes[arg_array[0]]()
@@ -338,6 +338,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

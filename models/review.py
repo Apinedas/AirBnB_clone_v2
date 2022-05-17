@@ -6,6 +6,7 @@ from os import getenv
 
 env = getenv('HBNB_TYPE_STORAGE')
 
+
 class Review(BaseModel, Base if (env == "db") else object):
     """ Review classto store review information """
     if env == "db":
