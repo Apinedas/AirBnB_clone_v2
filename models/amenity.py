@@ -7,7 +7,7 @@ from os import getenv
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-class Amenity(BaseModel, Base):
+class Amenity(BaseModel, Base if (env == "db") else object):
     """Amenity Class for HBnB"""
     if env == "db":
         __tablename__ = "amenities"

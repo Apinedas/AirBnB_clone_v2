@@ -7,7 +7,7 @@ from os import getenv
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-class User(BaseModel, Base):
+class User(BaseModel, Base if (env == "db") else object):
     """This class defines a user by various attributes"""
     if env == "db":
         __tablename__ = 'users'

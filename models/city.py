@@ -7,7 +7,7 @@ from os import getenv
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-class City(BaseModel, Base):
+class City(BaseModel, Base if (env == "db") else object):
     """ The city class, contains state ID and name """
     if env == "db":
         __tablename__ = "cities"

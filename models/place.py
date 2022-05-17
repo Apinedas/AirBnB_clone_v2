@@ -9,7 +9,7 @@ import models
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-class Place(BaseModel, Base):
+class Place(BaseModel, Base if (env == "db") else object):
     """ A place to stay """
     if env == 'db':
         __tablename__ = 'places'

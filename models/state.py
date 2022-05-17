@@ -9,7 +9,7 @@ import models
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-class State(BaseModel, Base):
+class State(BaseModel, Base if (env == "db") else object):
     """ State class """
     if env == "db":
         __tablename__ = "states"
