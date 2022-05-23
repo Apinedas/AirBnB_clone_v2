@@ -8,9 +8,10 @@ def do_pack():
     from fabric.api import local
     now = datetime.datetime.now()
 
-    name = 'web_static_{}{}{}{}{}{}.tgz'.format(now.year, now.month, now.day, now.hour, now.minute, now.second)
-    local("mkdir versions")
-    result = local("tar -cvzf versions/{} web_static".format(name))
+    name = 'web_static_{}{}{}{}{}{}.tgz'.format(
+            now.year, now.month, now.day, now.hour, now.minute, now.second)
+    result = local("mkdir -p versions && tar -cvzf versions/{}\
+                    web_static".format(name))
     if result.succeeded:
         return "versions/{}".format(name)
     return None
