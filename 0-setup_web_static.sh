@@ -10,6 +10,5 @@ sudo chmod 666 /data/web_static/releases/test/index.html
 echo -e "<html>\n  <head>\n  </head>\n  <body>\n    Holberton School\n  </body>\n</html>" > /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
 sudo chown -hR ubuntu:ubuntu /data
-new_string="server_name _;\n\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}"
-sudo sed -i "0,/server_name _;/{s|server_name _;|$new_string|}" /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server;/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-available/default
 sudo service nginx restart
