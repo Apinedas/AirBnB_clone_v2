@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''First flask WSGI'''
+'''Flask WSGI for multiple routes'''
 
 
 from flask import Flask
@@ -13,7 +13,7 @@ def hello_hbnb():
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hello_hbnb():
+def just_hbnb():
     '''Second function. Prints on /hbnb'''
     return "HBNB"
 
