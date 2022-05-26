@@ -22,11 +22,11 @@ def state_list(id=None):
     """Returns a HTML with states list"""
     state_list = storage.all(State).values()
     if not id:
-        return render_template('9-states.html', st_list=state_list)
+        return render_template('9-states.html', st_list=state_list, status=1)
     for state in state_list:
         if state.id == id:
-            return render_template('9-states.html', st_list=[state])
-    return render_template('9-states.html', st_list=None)
+            return render_template('9-states.html', st_list=[state], status=2)
+    return render_template('9-states.html', st_list=None, status=0)
 
 
 if __name__ == "__main__":
