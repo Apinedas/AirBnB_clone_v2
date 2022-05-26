@@ -62,3 +62,7 @@ class FileStorage:
         if obj in FileStorage.__objects.values():
             del FileStorage.__objects[obj.to_dict()['__class__']
                                       + '.' + obj.id]
+
+    def close(self):
+        '''Required to update HBNB using flask'''
+        self.reload()
