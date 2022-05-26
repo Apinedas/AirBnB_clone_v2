@@ -60,8 +60,8 @@ class FileStorage:
         if not obj:
             return
         if obj in FileStorage.__objects.values():
-            del FileStorage.__objects[obj.to_dict()['__class__']
-                                      + '.' + obj.id]
+            del FileStorage.__objects[obj.to_dict()['__class__'] +
+                                      '.' + obj.id]
 
     def close(self):
         '''Required to update HBNB using flask'''
