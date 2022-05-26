@@ -19,11 +19,8 @@ def teardown_close(self):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_state_list():
     """Returns a HTML with states list"""
-    state_dict = storage.all(State)
-    city_dict = dict()
-    for state in state_dict.values():
-        city_dict[state] = state.cities
-    return render_template('8-cities_by_states.html', city_dict=city_dict)
+    state_list = storage.all(State).values()
+    return render_template('8-cities_by_states.html', st_list=state_list)
 
 
 if __name__ == "__main__":
