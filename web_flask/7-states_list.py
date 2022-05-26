@@ -6,6 +6,11 @@ from flask import Flask, render_template
 from models import storage, state
 app = Flask(__name__)
 
+@app.teardown_appcontext
+def teardown_close():
+    "Closses sqlalchemy session"
+    storage.close()
+
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """Returns a HTML with states list"""
