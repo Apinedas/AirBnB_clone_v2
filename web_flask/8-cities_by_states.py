@@ -20,10 +20,7 @@ def teardown_close(self):
 def cities_by_state_list():
     """Returns a HTML with states list"""
     state_dict = storage.all(State)
-    city_dict = dict()
-    for state in state_dict.values():
-        city_dict[state.name] = state.cities
-    return render_template('7-states_list.html', city_dict=city_dict)
+    return render_template('7-states_list.html', st_list=state_dict.values())
 
 
 if __name__ == "__main__":
